@@ -22,7 +22,7 @@ def print_triangle_improved(n):
         print("*" * i)
 
 # print_triangle(20)
-# print_triangle_improved(20)
+print_triangle_improved(20)
 
 
 
