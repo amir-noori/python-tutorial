@@ -27,24 +27,42 @@ def encrypt(plaintext, key):
       ciphertext = ciphertext + random.choice(alphabet)
   return ciphertext
 
-#Main program starts here...
-#Input...
-plaintext = input("Enter a message to encrypt (plaintext)")
-key = int(input("Input a key as a number between 1 and 10"))
-while not (key>=1 and key<=10):
-  print("Invalid key, try again!")
-  key = int(input("Input a key as a number between 1 and 10"))
 
-#Process...  
-print("...")
-time.sleep(1)
-print("Encrypting plaintext...")
-time.sleep(1)
-print("...")
-time.sleep(1)
+def decrypt1(enplaintext, enkey):
+  mystring = enplaintext
+  ciphertext = ""
+  while len(mystring) != 0:
+    character = mystring[0]
+    ciphertext = ciphertext + character
+    mystring = mystring[1 + enkey:len(mystring)]
+  return ciphertext
+
+
+def decrypt2(ciphertext, key):
+  plaintext = ""
+  counter = 0
+  for c in ciphertext:
+    if counter == 0:
+      plaintext += c
+      counter += 1
+    elif counter == key:
+      counter = 0
+    else:
+      counter += 1
+      
+  return plaintext
+
+
+def decrypt3(ciphertext, key):
+  return "".join([c for c in ciphertext[0::(key+1)]])
+
+plaintext = "test text"
+key = 2
 ciphertext = encrypt(plaintext, key)
-
-#Output...
-print("Ciphertext:")
-print(ciphertext)  
-  
+print(ciphertext)
+decrypted_result1 = decrypt1(ciphertext, key)
+print(decrypted_result1)
+decrypted_result2 = decrypt2(ciphertext, key)
+print(decrypted_result2)
+decrypted_result3 = decrypt3(ciphertext, key)
+print(decrypted_result3)
