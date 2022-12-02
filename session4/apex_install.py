@@ -2,8 +2,11 @@
 import sys
 import os
 
-install_file_path = sys.argv[1]
-output_file_path = sys.argv[2]
+# to run this file in command line:
+# python apex_install.py apex/install.sql out.sql
+
+install_file_path = sys.argv[1] # apex/install.sql 
+output_file_path = sys.argv[2] # out.sql
 install_file_parent_directory = "."
 sep = os.sep
 
